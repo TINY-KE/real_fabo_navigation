@@ -1,0 +1,13 @@
+<launch>
+    <!-- 虚假里程计 -->
+    <!-- <node pkg="tf" type="static_transform_publisher" name="odom_to_map" args="0.0 0.0 0.0    0 0.0 0.0 odom base_footprint 100"/>  -->
+    
+    <!-- 启动hokuyo 10xl -->
+    <include file="$(find urg_node)/launch/urg_lidar.launch" />
+    <!-- <node pkg="tf" type="static_transform_publisher" name="laser_basefootprint_broadcaster" args="0.2918 0.0 0.2333 0 0 0  base_footprint  laser 100" /> -->
+
+    <!-- 启动cartograpger的定位 -->
+    <include file="$(find cartographer_ros)/launch/hokuyo_localiaztion_no_odom.launch" />
+    
+
+</launch>

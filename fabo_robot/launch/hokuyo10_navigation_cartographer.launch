@@ -1,0 +1,21 @@
+<launch>
+    <!-- 启动hokuyo 10xl -->
+    <include file="$(find urg_node)/launch/urg_lidar.launch" />
+    <!-- <node pkg="tf" type="static_transform_publisher" name="laser_basefootprint_broadcaster" args="0.2918 0.0 0.2333 0 0 0  base_footprint  laser 100" /> -->
+
+    <!-- 将cmd转化为蓝牙控制指令 -->
+    <node name="motion_to_blueteeth" pkg="fabo_robot" type="motion_to_blueteeth" />
+
+    <!-- 启动cartograpger的定位 -->
+    <arg name="map" default="/home/zhjd/ws_real_fabo_navigation/src/real_fabo_navigation/carto_map_save/a314_1.pbstream"/>
+    <include file="$(find cartographer_ros)/launch/hokuyo_localiaztion_no_odom.launch" >
+        <arg name="map" value="/home/zhjd/ws_real_fabo_navigation/src/real_fabo_navigation/carto_map_save/a314_1.pbstream"/>
+    </include>
+    <!-- 运行move_base节点 -->
+    <include file="$(find fabo_robot)/launch/move_base.launch" />
+    
+    
+    <!-- 运行rviz 【使用cartograpger启动的rviz】-->
+    <!-- <include file="$(find turtlebot_rviz_launchers)/launch/view_navigation.launch" /> -->
+
+</launch>
