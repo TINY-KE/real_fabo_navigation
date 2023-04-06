@@ -31,6 +31,7 @@
 + 启动蓝牙
 
   + 蓝牙硬件重启
+
         sudo systemctl daemon-reload 
         sudo systemctl restart bluetooth 
         sudo chmod 777 /var/run/sdp
