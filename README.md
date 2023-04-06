@@ -31,11 +31,10 @@
 + 启动蓝牙
 
   + 蓝牙硬件重启
-
-        `sudo systemctl daemon-reload 
+        sudo systemctl daemon-reload 
         sudo systemctl restart bluetooth 
         sudo chmod 777 /var/run/sdp
-        sdptool add --channel=22 SP`
+        sdptool add --channel=22 SP
 
   + 连接蓝牙：小胖的安卓平板连接自己的笔记本
 
@@ -51,4 +50,4 @@
 
 + 运行：注意修改其中的地图的位置
 
-`hokuyo10_navigation_cartographer.launch`
+    `hokuyo10_navigation_cartographer.launch`
